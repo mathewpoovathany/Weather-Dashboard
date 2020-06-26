@@ -92,18 +92,6 @@ function APIcalls(){
     queryurl = url + city + APIkey;
     current_weather_url = currenturl + city + APIkey; 
    
-
-   ////////////////
-      $.ajax({
-            url:"http://api.openweathermap.org/data/2.5/uvi?appid=df236566bc84a1956b2208ff347690f3&lat="+ current_data.coord.lat +"&lon="+ current_data.coord.lon, 
-            method: "GET", 
-        }).then(function(data){
-            console.log(data);
-    
-         $("#today_UV").text("UV Index: " + data.value);
-            
-        })
-    //////////////////
     
     $("#name_of_city").text("Today's Weather in " + city);
     $.ajax({
@@ -145,7 +133,19 @@ function APIcalls(){
          method: "GET", 
      }).then(function(current_data){
          console.log(current_data);
+    /////////////////////// api  call for UV data
+var lat =current_data.coord.lat;
+var lon =current_data.coord.lon;
+   $.ajax({
+    url:"http://api.openweathermap.org/data/2.5/uvi?appid=df236566bc84a1956b2208ff347690f3&lat="+lat+"&lon="+lon, 
+    method: "GET", 
+}).then(function(data){
+    console.log(data);
+
+ $("#today_UV").text("UV Index: " + data.value);
     
+})
+//////////////////
 
 
          let temp = Math.round(((current_data.main.temp - 273.15) * 9/5 + 32))
