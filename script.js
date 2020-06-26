@@ -138,7 +138,7 @@ function APIcalls(){
     
 /////////////////////// api  call for UV data
         $.ajax({
-            url:"http://api.openweathermap.org/data/2.5/uvi?appid=df236566bc84a1956b2208ff347690f3&lat="+current_data.coord.lat+"&lon="+current_data.coord.lon, 
+            url:"http://api.openweathermap.org/data/2.5/uvi?appid=df236566bc84a1956b2208ff347690f3&lat="+ current_data.coord.lat +"&lon="+ current_data.coord.lon, 
             method: "GET", 
         }).then(function(data){
             console.log(data);
